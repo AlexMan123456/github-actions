@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Setup GitHub user
+      run: |
+        git config --global user.name "AlexUpBot"
+        git config --global user.email "alexupbot@bot.com"
     - name: Push tags
       run: git push origin --follow-tags
       env:
