@@ -28,19 +28,13 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Build package
-      run: npm run build --if-present
+      run: npm run build
     - name: Fetch from main
         git fetch --unshallow origin main
 
     - name: Check version number
       run: |
-        newPackageVersion=$(jq -r '.version' package.json)
-        newLockVersion=$(jq -r '.version' package-lock.json)
-
-        if [[ "$newPackageVersion" != "$newLockVersion" ]]; then
-          echo "❌ package.json and package-lock.json out of sync. Please run \`npm install\` to fix this."
-          exit 1
-        fi
+        npx alex-c-line check-lockfile-version-discrepancy
 
         echo "Checking for source code changes..."
         if git diff origin/main...HEAD --quiet "src/*"; then
