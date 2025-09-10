@@ -1,0 +1,15 @@
+name: Push Tags
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push-tags:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Push tags
+      run: git push origin --follow-tags
+      env:
+        GH_TOKEN: ${{ secrets.PAT_GITHUB }}
