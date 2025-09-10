@@ -1,0 +1,23 @@
+{
+  "name": "github-actions",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "change-major": "npm version major -m \"Change version number to v%s\"",
+    "change-minor": "npm version minor -m \"Change version number to v%s\"",
+    "change-patch": "npm version patch -m \"Change version number to v%s\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexMan123456/github-actions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlexMan123456/github-actions/issues"
+  },
+  "homepage": "https://github.com/AlexMan123456/github-actions#readme"
+}
