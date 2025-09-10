@@ -3,9 +3,10 @@ name: publish npm
 on:
   workflow_call:
     inputs:
-      npm-auth-token:
+      NPM_AUTH_TOKEN:
         description: "NPM token to allow the workflow to publish the package"
         required: true
+        type: string
 
 jobs:
   publish:
