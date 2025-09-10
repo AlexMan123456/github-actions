@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       run-tests:
-        description: "Whether to run tests after build"
+        description: "Include test runs"
         required: false
         default: true
         type: boolean
