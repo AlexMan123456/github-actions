@@ -2,6 +2,9 @@ name: publish npm
 
 on:
   workflow_call:
+    secrets:
+      NPM_AUTH_TOKEN:
+        required: true
 
 jobs:
   publish:
