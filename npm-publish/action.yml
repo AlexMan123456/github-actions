@@ -2,7 +2,7 @@ name: publish npm
 
 on:
   workflow_call:
-    inputs:
+    secrets:
       NPM_AUTH_TOKEN:
         description: NPM token to allow publishing of the package
         required: true
@@ -29,4 +29,4 @@ jobs:
       - name: Publish to npm
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ inputs.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
