@@ -1,13 +1,6 @@
 name: "Publish npm package"
 description: "Builds and publishes an npm package"
 
-on:
-  workflow_call:
-    secrets:
-      NPM_AUTH_TOKEN:
-        description: NPM token to allow publishing of the package
-        required: true
-
 runs:
   using: composite
   steps:
@@ -29,7 +22,7 @@ runs:
     - name: Publish to npm
       run: npm publish --access public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ inputs.NPM_AUTH_TOKEN }}
 
 
 inputs:
