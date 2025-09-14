@@ -31,7 +31,7 @@ runs:
     shell: bash
 
   - name: Update Node dependencies
-    uses: ../update-npm.sh
+    run: ../update-npm.sh
     shell: bash
 
   - name: Update GitHub Actions
