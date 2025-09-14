@@ -26,8 +26,13 @@ jobs:
       GH_TOKEN: ${{ secrets.PAT_GITHUB }}
     shell: bash
 
+  - name: Install dependencies
+    run: npm install
+    shell: bash
+
   - name: Update Node dependencies
-    uses: ../update-npm
+    uses: ../update-npm.sh
+    shell: bash
 
   - name: Update GitHub Actions
     run: npx actions-up -y
