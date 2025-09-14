@@ -1,0 +1,21 @@
+name: Update Node dependencies
+description: "Update dependencies in an NPM project"
+
+jobs:
+  using: composite
+  steps:
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+      with:
+        node-version: 22.x
+        cache: "npm"
+    - name: Update Node dependencies
+      run: |
+        cp package-lock.json package-lock-backup.json
+        npx npm-check-updates -u
+        if ! npm install; then
+          echo "npm install failed, restoring lockfile"
+          mv package-lock-backup.json package-lock.json
+        else
+          rm -f package-lock-backup.json
+        fi
