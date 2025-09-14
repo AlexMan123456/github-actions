@@ -31,7 +31,7 @@ runs:
     shell: bash
 
   - name: Update Node dependencies
-    run: ../update-npm.sh
+    run: npx npm-check-updates && npm install || true
     shell: bash
 
   - name: Update GitHub Actions
