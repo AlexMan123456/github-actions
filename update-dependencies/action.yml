@@ -1,7 +1,7 @@
 name: "Update dependencies"
 description: "Update dependencies in an NPM project, along with the GitHub Actions, and creates a pull request with updates"
 
-jobs:
+runs:
   using: composite
   steps:
   - name: Use Node.js
