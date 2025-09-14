@@ -13,6 +13,7 @@ jobs:
     run: |
       git config --global user.name "AlexUpBot"
       git config --global user.email "alexupbot@bot.com"
+    shell: bash
 
   - name: Check if pull request to update dependencies already exists
     run: |
@@ -23,12 +24,14 @@ jobs:
       fi
     env:
       GH_TOKEN: ${{ secrets.PAT_GITHUB }}
+    shell: bash
 
   - name: Update Node dependencies
     uses: ../update-npm
 
   - name: Update GitHub Actions
     run: npx actions-up -y
+    shell: bash
 
   - name: Create Pull Request
     uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
