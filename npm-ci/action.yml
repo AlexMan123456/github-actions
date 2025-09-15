@@ -4,7 +4,6 @@ description: "Verify code with linting and testing"
 runs:
   using: composite
   steps:
-  - uses: actions/checkout@v4
   - name: Use Node.js
     uses: actions/setup-node@v4
     with:
