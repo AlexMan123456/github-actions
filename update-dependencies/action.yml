@@ -33,6 +33,11 @@ runs:
   - name: Update Node dependencies
     run: npm run update-dependencies || true
     shell: bash
+  
+  # Needed because re-installing dependencies after an update in Neurosongs keeps changing package-lock.json for some reason
+  - name: Re-install dependencies
+    run: npm install || true
+    shell: bash
 
   - name: Update GitHub Actions
     run: npx actions-up -y
