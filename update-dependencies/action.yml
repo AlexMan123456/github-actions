@@ -35,9 +35,11 @@ runs:
     shell: bash
   
   # Needed because re-installing dependencies after an update in Neurosongs keeps changing package-lock.json for some reason
-  - name: Re-install dependencies
-    run: npm install || true
-    shell: bash
+  - name: Finalise lockfile
+    run: |
+      rm -rf node_modules
+      npm ci
+      npm dedupe
 
   - name: Update GitHub Actions
     run: npx actions-up -y
