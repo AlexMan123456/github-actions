@@ -40,6 +40,7 @@ runs:
       rm -rf node_modules **/node_modules
       npm install --workspaces --include-workspace-root
       npm dedupe
+    shell: bash
 
   - name: Update GitHub Actions
     run: npx actions-up -y
