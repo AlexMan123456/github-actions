@@ -40,6 +40,7 @@ runs:
       rm -rf node_modules
       npm ci
       npm dedupe
+    shell: bash
 
   - name: Update GitHub Actions
     run: npx actions-up -y
