@@ -21,11 +21,3 @@ runs:
     - name: Publish to npm
       run: npm publish --access public
       shell: bash
-      env:
-        NODE_AUTH_TOKEN: ${{ inputs.NPM_AUTH_TOKEN }}
-
-
-inputs:
-  NPM_AUTH_TOKEN:
-    description: "NPM token to allow publishing"
-    required: true
