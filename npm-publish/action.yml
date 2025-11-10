@@ -12,6 +12,7 @@ runs:
     
     - name: Update npm
       run: npm install -g npm@latest
+      shell: bash
 
     - name: Install dependencies
       run: npm install
