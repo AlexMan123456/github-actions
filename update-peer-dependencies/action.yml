@@ -1,5 +1,5 @@
-name: "Update dependencies"
-description: "Update dependencies in an NPM project, along with the GitHub Actions, and creates a pull request with updates"
+name: "Update peer dependencies"
+description: "Update peer dependencies in an NPM project, change the minor version, and creates a pull request with updates"
 
 runs:
   using: composite
