@@ -1,0 +1,53 @@
+name: "Update dependencies"
+description: "Update dependencies in an NPM project, along with the GitHub Actions, and creates a pull request with updates"
+
+runs:
+  using: composite
+  steps:
+  - name: Use Node.js
+    uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+    with:
+      node-version: 22
+      cache: "npm"
+  - name: Setup GitHub user
+    run: |
+      git config --global user.name "AlexUpBot"
+      git config --global user.email "alexupbot@bot.com"
+    shell: bash
+
+  - name: Check if pull request to update peer dependencies already exists
+    run: |
+      PULL_REQUEST_ID=$(gh pr list --state open --head alex-up-bot/update-peer-dependencies --json number --jq '.[].number')
+      if [ -n "$PULL_REQUEST_ID" ]; then
+        echo "Dependency update pull request already exists (#$PULL_REQUEST_ID). Exiting."
+        exit 1
+      fi
+    env:
+      GH_TOKEN: ${{ inputs.PAT_GITHUB }}
+    shell: bash
+
+  - name: Install dependencies
+    run: npm install
+    shell: bash
+
+  - name: Update Node dependencies
+    run: npm run update-peer-dependencies || true
+    shell: bash
+
+  - name: Change version number
+    run: npm version minor --no-git-tag-show
+    shell: bash
+
+  - name: Create Pull Request
+    uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+    with:
+      token: ${{ inputs.PAT_GITHUB }}
+      branch: alex-up-bot/update-peer-dependencies
+      base: main
+      commit-message: Update peer dependencies and change minor version
+      title: "Update peer dependencies"
+
+inputs:
+  PAT_GITHUB:
+    description: "GitHub token to allow pull request to be created"
+    required: true
