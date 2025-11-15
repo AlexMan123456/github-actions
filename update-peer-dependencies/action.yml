@@ -27,13 +27,13 @@ runs:
     shell: bash
 
   - name: Install dependencies
-    run: npm install
+    run: npm ci
     shell: bash
 
   - name: Change version number
     run: npm version minor --no-git-tag-show
     shell: bash
-    
+
   - name: Update Node dependencies
     run: npm run update-peer-dependencies || true
     shell: bash
