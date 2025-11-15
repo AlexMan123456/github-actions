@@ -30,13 +30,14 @@ runs:
     run: npm install
     shell: bash
 
+  - name: Change version number
+    run: npm version minor --no-git-tag-show
+    shell: bash
+    
   - name: Update Node dependencies
     run: npm run update-peer-dependencies || true
     shell: bash
 
-  - name: Change version number
-    run: npm version minor --no-git-tag-show
-    shell: bash
 
   - name: Create Pull Request
     uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
