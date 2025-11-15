@@ -31,7 +31,7 @@ runs:
     shell: bash
 
   - name: Change version number
-    run: npm version minor --no-git-tag-show
+    run: npm version minor -m "Change version number to v%s"
     shell: bash
 
   - name: Update Node dependencies
@@ -45,7 +45,7 @@ runs:
       token: ${{ inputs.PAT_GITHUB }}
       branch: alex-up-bot/update-peer-dependencies
       base: main
-      commit-message: Update peer dependencies and change minor version
+      commit-message: Update peer dependencies
       title: "Update peer dependencies"
 
 inputs:
