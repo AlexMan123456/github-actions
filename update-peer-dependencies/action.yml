@@ -25,6 +25,10 @@ runs:
     env:
       GH_TOKEN: ${{ inputs.PAT_GITHUB }}
     shell: bash
+  
+  - name: Use latest NPM version
+    run: npm install -g npm@latest
+    shell: bash
 
   - name: Install dependencies
     run: npm ci
