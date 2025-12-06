@@ -21,7 +21,8 @@
     "lint": "pnpm run lint-package-json && pnpm run lint-actions",
     "lint-actions": "prettier --check \"./**/*.yml\"",
     "lint-package-json": "eslint package.json",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update-dependencies": "pnpm update --latest && pnpm update"
   },
   "devDependencies": {
     "@alextheman/eslint-plugin": "^4.3.0",
