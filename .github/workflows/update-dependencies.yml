@@ -45,6 +45,9 @@ jobs:
           git config --global user.name "AlexUpBot"
           git config --global user.email "alexupbot@bot.com"
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Update JavaScript dependencies
         run: |
           pnpm run update-dependencies
