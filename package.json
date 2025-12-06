@@ -1,23 +1,31 @@
 {
   "name": "github-actions",
   "version": "2.3.3",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "change-major": "npm version major -m \"Change version number to v%s\"",
-    "change-minor": "npm version minor -m \"Change version number to v%s\"",
-    "change-patch": "npm version patch -m \"Change version number to v%s\""
-  },
+  "description": "Common GitHub Actions used across my repositories",
+  "homepage": "https://github.com/AlexMan123456/github-actions#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlexMan123456/github-actions.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/AlexMan123456/github-actions/issues"
+  "author": "alextheman",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "change-major": "npm version major -m \"Change version number to v%s\"",
+    "change-minor": "npm version minor -m \"Change version number to v%s\"",
+    "change-patch": "npm version patch -m \"Change version number to v%s\"",
+    "format": "pnpm run format-package-json && pnpm run format-actions",
+    "format-actions": "prettier --write \"./**/*.yml\"",
+    "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
+    "lint": "pnpm run lint-package-json && pnpm run lint-actions",
+    "lint-actions": "prettier --check \"./**/*.yml\"",
+    "lint-package-json": "eslint package.json"
   },
-  "homepage": "https://github.com/AlexMan123456/github-actions#readme"
+  "devDependencies": {
+    "@alextheman/eslint-plugin": "^4.3.0",
+    "eslint": "^9.39.1",
+    "prettier": "^3.7.4"
+  },
+  "packageManager": "pnpm@10.24.0+sha512.01ff8ae71b4419903b65c60fb2dc9d34cf8bb6e06d03bde112ef38f7a34d6904c424ba66bea5cdcf12890230bf39f9580473140ed9c946fef328b6e5238a345a"
 }
