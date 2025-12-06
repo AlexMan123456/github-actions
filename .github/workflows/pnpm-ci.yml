@@ -10,7 +10,7 @@ on:
         type: boolean
 
 jobs:
-  ci:
+  pnpm-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
