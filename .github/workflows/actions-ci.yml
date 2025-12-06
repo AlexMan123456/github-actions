@@ -1,16 +1,13 @@
-name: PNPM CI
+name: Actions CI
 
 on:
-  workflow_call:
-    inputs:
-      run-tests:
-        description: "Include test runs"
-        required: false
-        default: true
-        type: boolean
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-  pnpm-ci:
+  actions-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
@@ -33,12 +30,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build package
-        run: pnpm run build --if-present
-
       - name: Run linting checks
         run: pnpm run lint
-
-      - name: Run tests
-        if: ${{ inputs.run-tests == true }}
-        run: pnpm test
