@@ -12,9 +12,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "change-major": "npm version major -m \"Change version number to v%s\"",
-    "change-minor": "npm version minor -m \"Change version number to v%s\"",
-    "change-patch": "npm version patch -m \"Change version number to v%s\"",
+    "change-major": "pnpm version major -m \"Change version number to v%s\"",
+    "change-minor": "pnpm version minor -m \"Change version number to v%s\"",
+    "change-patch": "pnpm version patch -m \"Change version number to v%s\"",
     "format": "pnpm run format-package-json && pnpm run format-actions",
     "format-actions": "prettier --write \"./**/*.yml\"",
     "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
