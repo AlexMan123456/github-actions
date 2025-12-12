@@ -31,4 +31,4 @@ jobs:
       - name: Create Git tag
         run: |
           git tag ${{ steps.get_version.outputs.version }}
-          git push origin --follow-tags
+          git push origin ${{ steps.get_version.outputs.version }}
