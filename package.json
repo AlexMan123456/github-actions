@@ -25,7 +25,7 @@
     "update-dependencies": "pnpm update --latest && pnpm update"
   },
   "devDependencies": {
-    "@alextheman/eslint-plugin": "^4.3.0",
+    "@alextheman/eslint-plugin": "^4.5.1",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
     "prettier": "^3.7.4"
