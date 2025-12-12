@@ -53,6 +53,9 @@ jobs:
           pnpm run update-dependencies
           pnpm install --no-frozen-lockfile
 
+      - name: Update PNPM
+        run: corepack use pnpm@latest
+
       - name: Update GitHub Actions
         run: pnpx actions-up -y
 
