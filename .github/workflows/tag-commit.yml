@@ -1,0 +1,30 @@
+name: Tag commit
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  tag-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+
+      - name: Fetch from main
+        run: git fetch --unshallow origin main
+
+      - name: Setup GitHub user
+        run: |
+          git config --global user.name "AlexUpBot"
+          git config --global user.email "alexupbot@bot.com"
+
+      - name: Read version from package.json
+        id: get_version
+        run: |
+          VERSION=v$(jq -r ".version" package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create Git tag
+        run: |
+          git tag ${{ steps.get_version.outputs.version }}
+          git push origin --follow-tags
