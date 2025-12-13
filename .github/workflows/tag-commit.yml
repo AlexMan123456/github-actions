@@ -3,12 +3,13 @@ on:
   push:
     branches: ["main"]
 
-permissions:
-  contents: write
-
 jobs:
-  tag-commit:
+  check-commit:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
+    outputs:
+      exists: ${{ steps.check_version.outputs.exists }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -44,8 +45,36 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
+  tag-commit:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    needs: check-commit
+    if: needs.check-commit.outputs.exists == 'false'
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+
+      - name: Fetch from main
+        run: git fetch --unshallow origin main
+
+      - name: Setup GitHub user
+        env:
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+        run: |
+          git config --global user.name "AlexUpBot"
+          git config --global user.email "alexupbot@bot.com"
+          git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
+
+      - name: Read version from package.json
+        id: get_version
+        run: |
+          VERSION=v$(jq -r ".version" package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: Create Git tag
-        if: steps.check_version.outputs.exists == 'false'
         env:
           TAG: ${{ steps.get_version.outputs.version }}
         run: |
