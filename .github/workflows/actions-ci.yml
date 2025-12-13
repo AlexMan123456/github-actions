@@ -6,12 +6,17 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+
 jobs:
   actions-ci:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
 
       - name: Fetch from main
         run: git fetch --unshallow origin main
@@ -27,8 +32,14 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
+      - name: Use Homebrew
+        uses: Homebrew/actions/setup-homebrew@7f6df1cd36597249cbf9810ff3aeff47edf8243b
+
       - name: Install dependencies
         run: pnpm install
+
+      - name: Install Zizmor
+        run: brew install zizmor
 
       - name: Run linting checks
         run: pnpm run lint
