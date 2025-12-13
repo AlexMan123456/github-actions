@@ -21,13 +21,6 @@ jobs:
           git fetch --unshallow origin main
           git fetch --tags origin
 
-      - name: Setup GitHub user
-        env:
-          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
-        run: |
-          git config --global user.name "AlexUpBot"
-          git config --global user.email "alexupbot@bot.com"
-
       - name: Read version from package.json
         id: get_version
         run: |
