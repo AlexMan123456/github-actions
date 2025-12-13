@@ -19,7 +19,7 @@
     "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
     "format-prettier": "prettier --write \"./**/*.yml\"",
     "format-zizmor": "zizmor --fix .",
-    "lint": "pnpm run lint-package-json && pnpm run lint-prettier && pnpm run lint-zizmor",
+    "lint": "pnpm run lint-package-json && pnpm run lint-zizmor && pnpm run lint-prettier",
     "lint-package-json": "eslint package.json",
     "lint-prettier": "prettier --check \"./**/*.yml\"",
     "lint-zizmor": "zizmor .",
