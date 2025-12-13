@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       exists: ${{ steps.check_version.outputs.exists }}
+      version: ${{ steps.get_version.outputs.version }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
@@ -64,15 +65,9 @@ jobs:
           git config --global user.email "alexupbot@bot.com"
           git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
 
-      - name: Read version from package.json
-        id: get_version
-        run: |
-          VERSION=v$(jq -r ".version" package.json)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Create Git tag
         env:
-          TAG: ${{ steps.get_version.outputs.version }}
+          TAG: ${{ needs.check-commit.outputs.version }}
         run: |
           git tag "$TAG"
           git push origin "$TAG"
