@@ -22,7 +22,7 @@ jobs:
           git fetch --unshallow origin main
           git fetch --tags origin
 
-      - name: Read version from package.json
+      - name: Get version from package.json
         id: get_version
         run: |
           VERSION=v$(jq -r ".version" package.json)

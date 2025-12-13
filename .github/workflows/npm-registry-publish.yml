@@ -29,20 +29,21 @@ jobs:
       - name: Use latest NPM version
         run: npm install -g npm@latest
 
-      - name: Read version from package.json
-        id: get_version
+      - name: Get package data from package.json
+        id: get_package_data
         run: |
+          NAME=$(jq -r '.name' package.json)
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+
           VERSION=v$(jq -r ".version" package.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Check if version already exists
         id: check_version
         env:
-          TAG: ${{ steps.get_version.outputs.version }}
+          NAME: ${{ steps.get_package_data.outputs.name }}
+          VERSION: ${{ steps.get_package_data.outputs.version }}
         run: |
-          PACKAGE_NAME=$(jq -r '.name' package.json)
-          VERSION=$(jq -r '.version' package.json)
-
           if npm view "$PACKAGE_NAME@$VERSION" version >/dev/null 2>&1; then
             echo "Version $VERSION already exists, skipping publish..."
             echo "exists=true" >> $GITHUB_OUTPUT
