@@ -45,7 +45,7 @@ jobs:
           fi
 
       - name: Create Git tag
-        if: steps.check_version.outputs.exists == 'true'
+        if: steps.check_version.outputs.exists == 'false'
         env:
           TAG: ${{ steps.get_version.outputs.version }}
         run: |
