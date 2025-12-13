@@ -31,12 +31,13 @@ jobs:
       - name: Check if version already exists
         id: check_version
         env:
-          TAG: ${{ steps.get_version.outputs.version }}
+          VERSION: ${{ steps.get_version.outputs.version }}
         run: |
-          if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Version $TAG already exists, skipping tag creation..."
+          if git ls-remote --tags origin | grep -q "refs/tags/$VERSION$"; then
+            echo "Version $VERSION already exists, skipping tag creation..."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
+            echo "Version $VERSION does not already exist, creating tag..."
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
