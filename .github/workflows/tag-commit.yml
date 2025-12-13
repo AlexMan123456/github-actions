@@ -32,13 +32,22 @@ jobs:
           VERSION=v$(jq -r ".version" package.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Create Git tag
+      - name: Check if version already exists
+        id: check_version
         env:
           TAG: ${{ steps.get_version.outputs.version }}
         run: |
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Tag $TAG already exists on remote, skipping"
+            echo "Version $TAG already exists, skipping..."
+            echo "exists=true" >> $GITHUB_OUTPUT
           else
-            git tag "$TAG"
-            git push origin "$TAG"
+            echo "exists=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Create Git tag
+        if: steps.check_version.outputs.exists == 'true'
+        env:
+          TAG: ${{ steps.get_version.outputs.version }}
+        run: |
+          git tag "$TAG"
+          git push origin "$TAG"
