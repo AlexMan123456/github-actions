@@ -1,6 +1,6 @@
 {
   "name": "github-actions",
-  "version": "2.8.6",
+  "version": "2.8.7",
   "description": "Common GitHub Actions used across my repositories",
   "homepage": "https://github.com/AlexMan123456/github-actions#readme",
   "repository": {
@@ -12,9 +12,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "change-major": "pnpm version major --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\"",
-    "change-minor": "pnpm version minor --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\"",
-    "change-patch": "pnpm version patch --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\"",
+    "change-major": "git diff --quiet && git diff --cached --quiet && (pnpm version major --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\")",
+    "change-minor": "git diff --quiet && git diff --cached --quiet && (pnpm version minor --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\")",
+    "change-patch": "git diff --quiet && git diff --cached --quiet && (pnpm version patch --no-git-tag-version && git add package.json && git commit -m \"Change version number to v$(jq -r .version package.json)\")",
     "format": "pnpm run format-package-json && pnpm run format-prettier && pnpm run format-zizmor",
     "format-package-json": "eslint --fix --suppress-all package.json && rm -f eslint-suppressions.json",
     "format-prettier": "prettier --write \"./**/*.yml\"",
