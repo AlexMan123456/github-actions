@@ -31,8 +31,9 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create Git tag
+        env:
+          TAG: ${{ steps.get_version.outputs.version }}
         run: |
-          TAG=${{ steps.get_version.outputs.version }}
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
             echo "Tag $TAG already exists on remote, skipping"
           else
