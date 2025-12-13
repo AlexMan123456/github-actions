@@ -2,14 +2,13 @@ name: Publish to NPM Registry
 
 permissions:
   id-token: write
+  contents: read
 
 on:
   workflow_call:
 
 jobs:
   check-version:
-    permissions:
-      contents: read
     runs-on: ubuntu-latest
     outputs:
       exists: ${{ steps.check_version.outputs.exists }}
