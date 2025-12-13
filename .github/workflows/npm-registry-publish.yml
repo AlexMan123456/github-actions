@@ -2,7 +2,6 @@ name: Publish to NPM Registry
 
 permissions:
   id-token: write
-  contents: write
 
 on:
   workflow_call:
