@@ -39,7 +39,7 @@ jobs:
           TAG: ${{ steps.get_version.outputs.version }}
         run: |
           if git ls-remote --tags origin | grep -q "refs/tags/$TAG$"; then
-            echo "Version $TAG already exists, skipping..."
+            echo "Version $TAG already exists, skipping tag creation..."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
             echo "exists=false" >> $GITHUB_OUTPUT
@@ -80,5 +80,3 @@ jobs:
         run: |
           git tag "$TAG"
           git push origin "$TAG"
-
-#
