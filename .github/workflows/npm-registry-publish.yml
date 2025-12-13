@@ -48,7 +48,7 @@ jobs:
             echo "Version $VERSION already exists, skipping publish..."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
-            echo "Version $VERSION does not already exist, publishing..."
+            echo "Publishing $VERSION..."
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 

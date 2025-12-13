@@ -37,7 +37,7 @@ jobs:
             echo "Version $VERSION already exists, skipping tag creation..."
             echo "exists=true" >> $GITHUB_OUTPUT
           else
-            echo "Version $VERSION does not already exist, creating tag..."
+            echo "Creating tag for $VERSION..."
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
