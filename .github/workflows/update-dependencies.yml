@@ -46,6 +46,7 @@ jobs:
         run: |
           git config --global user.name "AlexUpBot"
           git config --global user.email "alexupbot@bot.com"
+          git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
 
       - name: Install dependencies
         run: pnpm install
