@@ -32,13 +32,13 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Check for existing version-change PR
+      - name: Check for existing version change pull request
         id: check_active_pull_requests
         env:
           GH_TOKEN: ${{ secrets.PAT_GITHUB }}
         run: |
           COUNT=$(gh pr list --state open --head alex-up-bot/version-change --json number --jq 'length')
-          if $COUNT != 0; then
+          if [[ $COUNT -ne 0 ]]; then
             echo "An active version-change pull request already exists. Skipping..."
             echo "should_create_pull_request=false" >> $GITHUB_OUTPUT
           else
