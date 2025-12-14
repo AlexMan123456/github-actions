@@ -33,6 +33,8 @@ jobs:
 
       - name: Check for existing version-change PR
         id: check_active_pull_requests
+        env:
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
         run: |
           COUNT=$(gh pr list --state open --head alex-up-bot/version-change --json number --jq 'length')
           if $COUNT != 0; then
