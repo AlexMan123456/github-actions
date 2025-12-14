@@ -103,4 +103,4 @@ jobs:
           token: ${{ secrets.PAT_GITHUB }}
           branch: alex-up-bot/version-change
           base: main
-          title: "Change version number to v${{ steps.get_new_version.outputs.version }}"
+          title: "Change version number to ${{ steps.get_new_version.outputs.version }}"
