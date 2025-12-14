@@ -1,0 +1,61 @@
+name: Commit a version change
+on:
+  workflow_dispatch:
+    inputs:
+      version-type:
+        description: The version type to change
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      message:
+        description: Release message
+        required: false
+  workflow_call:
+    secrets:
+      PAT_GITHUB:
+        required: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  commit-version-change:
+    runs-on: ubuntu-latest
+    env:
+      HUSKY: 0
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup GitHub user
+        env:
+          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+        run: |
+          git config --global user.name "AlexUpBot"
+          git config --global user.email "alexupbot@bot.com"
+          git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
+
+      - name: Use PNPM
+        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
+        with:
+          run_install: false
+
+      - name: Use Node.js
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Change version
+        env:
+          MESSAGE: ${{ inputs.message }}
+        run: pnpm version ${{ inputs.version-type }} -m "Change version number to v%s\n\n$MESSAGE"
+
+      - name: Push to main
+        run: git push --force origin main
