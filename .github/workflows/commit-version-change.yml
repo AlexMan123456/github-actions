@@ -75,7 +75,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.PAT_GITHUB }}
         run: |
-          COUNT=$(gh pr list --state open --head alex-up-bot/version-change --json number --jq 'length')
+          COUNT=$(gh pr list --state open --head alex-up-bot/change-${{ inputs.version-type }}-version --json number --jq 'length')
           if $COUNT != 0; then
             echo "An active version-change pull request already exists. Leaving body as is."
             echo "should_set_body=false" >> $GITHUB_OUTPUT
