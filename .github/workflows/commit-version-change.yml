@@ -78,4 +78,4 @@ jobs:
           base: main
           title: "Change version number to ${{ steps.get_new_version.outputs.version }}"
           maintainer-can-modify: false
-          body: ${{ inputs.message || format('Change version number to {0}', steps.get_new_version.outputs.version) }}
+          body: ${{ github.event_name == 'workflow_dispatch' && inputs.message != '' && inputs.message || format('Change version number to {0}', steps.get_new_version.outputs.version) }}
