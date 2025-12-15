@@ -65,7 +65,7 @@ jobs:
       - name: Generate JavaScript dependency diff
         id: javascript_dependency_diff
         run: |
-          DIFF=$(git diff '**/package.json' | grep -E '^[+-]\s*"[^"]+":' || true)
+          DIFF=$(git diff '**/package.json')
 
           if [ -z "$DIFF" ]; then
             echo "diff=No dependency changes detected." >> $GITHUB_OUTPUT
@@ -80,7 +80,7 @@ jobs:
       - name: Generate GitHub Actions diff
         id: github_actions_diff
         run: |
-          DIFF=$(git diff '.github/workflows/**/*.{yml,yaml}' '.github/actions/**' || true)
+          DIFF=$(git diff '.github/workflows/**/*.{yml,yaml}' '.github/actions/**'
 
           if [ -z "$DIFF" ]; then
             echo "diff=No workflow changes detected." >> $GITHUB_OUTPUT
