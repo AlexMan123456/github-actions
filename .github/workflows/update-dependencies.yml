@@ -80,7 +80,7 @@ jobs:
       - name: Generate GitHub Actions diff
         id: github_actions_diff
         run: |
-          DIFF=$(git diff '.github/workflows/**/*.{yml,yaml}' '.github/actions/**'
+          DIFF=$(git diff '.github/workflows/**/*.{yml,yaml}' '.github/actions/**' || true)
 
           if [ -z "$DIFF" ]; then
             echo "diff=No workflow changes detected." >> $GITHUB_OUTPUT
