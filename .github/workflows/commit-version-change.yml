@@ -90,4 +90,4 @@ jobs:
           base: main
           title: "Change version number to ${{ steps.get_new_version.outputs.version }}"
           maintainer-can-modify: false
-          body-path: "docs/releases/${{ inputs.version-type }}/${{ steps.get_new_version.outputs.version }}"
+          body-path: "docs/releases/${{ inputs.version-type }}/${{ steps.get_new_version.outputs.version }}.md"
