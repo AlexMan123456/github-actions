@@ -123,15 +123,6 @@ jobs:
           VERSION=v$(jq -r ".version" package.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Check for release document
-        run: |
-          if cat "$RELEASE_DOC_PATH" >/dev/null 2>&1; then
-            echo "Release document found. Continuing..."
-          else
-            echo "No release document found. Please create a release document in $RELEASE_DOC_PATH and run the workflow again."
-            exit 1
-          fi
-
       - name: Install alex-c-line
         run: npm install -g alex-c-line@latest
 
