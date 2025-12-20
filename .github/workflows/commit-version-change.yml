@@ -1,5 +1,7 @@
 name: Commit a version change
 on:
+  push:
+    branches: ["main"]
   workflow_dispatch:
   workflow_call:
     secrets:
