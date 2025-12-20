@@ -30,16 +30,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Use PNPM
-        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
-        with:
-          run_install: false
-
       - name: Use Node.js
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
         with:
           node-version: 22
-          cache: "pnpm"
 
       - name: Get the current version number
         id: get_current_version
@@ -101,21 +95,15 @@ jobs:
           git config --global user.email "alexupbot@bot.com"
           git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
 
-      - name: Use PNPM
-        uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
-        with:
-          run_install: false
-
       - name: Use Node.js
         uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
         with:
           node-version: 22
-          cache: "pnpm"
 
       - name: Change version
         env:
           VERSION_TYPE: ${{ env.VERSION_TYPE }}
-        run: pnpm version $VERSION_TYPE --no-git-tag-version
+        run: npm version $VERSION_TYPE --no-git-tag-version
 
       - name: Get the new version number
         id: get_new_version
