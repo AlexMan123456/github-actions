@@ -17,10 +17,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Fetch from main
-        run: |
-          git fetch --unshallow origin main
-          git fetch --tags origin
+      - name: Fetch tags from main
+        run: git fetch --tags origin
 
       - name: Get version from package.json
         id: get_version
@@ -53,7 +51,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Fetch from origin
+      - name: Fetch tags from origin
         run: |
           git fetch --unshallow origin main
           git fetch --tags origin
