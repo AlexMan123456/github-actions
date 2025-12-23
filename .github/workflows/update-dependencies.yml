@@ -49,7 +49,9 @@ jobs:
         run: pnpm install
 
       - name: Install actions-up
-        run: npm install -g actions-up@latest
+        run: |
+          npm install -g actions-up@latest
+          actions-up --version
 
       - name: Update JavaScript dependencies
         run: |

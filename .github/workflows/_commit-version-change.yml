@@ -42,7 +42,9 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Install alex-c-line
-        run: npm install -g alex-c-line@latest
+        run: |
+          npm install -g alex-c-line@latest
+          alex-c-line --version
 
       - name: Get next version
         env:
