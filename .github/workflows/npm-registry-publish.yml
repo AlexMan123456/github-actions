@@ -27,7 +27,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Use latest NPM version
-        run: npm install -g npm@latest
+        run: |
+          npm install -g npm@latest
+          npm --version
 
       - name: Get package data from package.json
         id: get_package_data
@@ -75,7 +77,9 @@ jobs:
           cache: "pnpm"
 
       - name: Use latest NPM version
-        run: npm install -g npm@latest
+        run: |
+          npm install -g npm@latest
+          npm --version
 
       - name: Install dependencies
         run: pnpm install
