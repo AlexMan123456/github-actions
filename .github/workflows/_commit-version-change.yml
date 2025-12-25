@@ -126,6 +126,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_GITHUB }}
           author: AlexUpBot <alexupbot@bot.com>
+          committer: AlexUpBot <alexupbot@bot.com>
           branch: alex-up-bot/change-${{ env.VERSION_TYPE }}-version
           base: main
           commit-message: "Change version number to ${{ steps.get_new_version.outputs.version }}"
