@@ -2,6 +2,9 @@ name: Create feature docs
 
 on:
   workflow_call:
+    secrets:
+      PAT_GITHUB:
+        required: true
 
 permissions:
   contents: write
