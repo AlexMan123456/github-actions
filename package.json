@@ -1,7 +1,7 @@
 {
   "name": "github-actions",
   "version": "3.1.2",
-  "description": "Common GitHub Actions used across my repositories",
+  "description": "Common GitHub Actions used across my repositories.",
   "homepage": "https://github.com/AlexMan123456/github-actions#readme",
   "repository": {
     "type": "git",
