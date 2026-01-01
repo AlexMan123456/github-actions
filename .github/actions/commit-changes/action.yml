@@ -8,17 +8,21 @@ inputs:
     type: string
 
 outputs:
-  changes_detected: ${{ steps.commit_changes.outputs.changes_detected }}
+  changes_detected:
+    description: "Whether changes were detected and committed"
+    value: ${{ steps.commit_changes.outputs.changes_detected }}
 
 runs:
   using: composite
   steps:
     - name: Commit changes
       id: commit_changes
+      env:
+        MESSAGE: ${{ inputs.message }}
       run: |
         if [ -n "$(git status --porcelain)" ]; then
           git add -A
-          git commit -m "${{ inputs.message }}"
+          git commit -m "$MESSAGE"
           echo "changes_detected=true" >> "$GITHUB_OUTPUT"
         else
           echo "No changes detected."
