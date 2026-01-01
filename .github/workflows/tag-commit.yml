@@ -88,3 +88,5 @@ jobs:
         with:
           body_path: docs/releases/${{ needs.check-version.outputs.version_type }}/${{ needs.check-version.outputs.version }}.md
           token: ${{ secrets.PAT_GITHUB }}
+          tag_name: ${{ needs.check-version.outputs.version }}
+          name: ${{ needs.check-version.outputs.version }}
