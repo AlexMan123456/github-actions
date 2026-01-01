@@ -1,4 +1,4 @@
-name: Tag commit
+name: Create GitHub Release
 on:
   push:
     branches: ["main"]
@@ -51,7 +51,7 @@ jobs:
             echo "should_create_tag=true" >> $GITHUB_OUTPUT
           fi
 
-  tag-commit:
+  create-github-release:
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -88,3 +88,5 @@ jobs:
         with:
           body_path: docs/releases/${{ needs.check-version.outputs.version_type }}/${{ needs.check-version.outputs.version }}.md
           token: ${{ secrets.PAT_GITHUB }}
+          tag_name: ${{ needs.check-version.outputs.version }}
+          name: ${{ needs.check-version.outputs.version }}
