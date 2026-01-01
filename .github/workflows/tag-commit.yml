@@ -11,20 +11,32 @@ jobs:
     outputs:
       should_create_tag: ${{ steps.check_version.outputs.should_create_tag }}
       version: ${{ steps.get_version.outputs.version }}
+      version_type: ${{ steps.get_version.outputs.version_type }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
 
+      - name: Use Node.js
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: 22
+
+      - name: Install alex-c-line
+        run: npm install -g alex-c-line@latest
+
       - name: Fetch tags from main
         run: git fetch --tags origin
 
-      - name: Get version from package.json
+      - name: Get version and type from package.json
         id: get_version
         run: |
           VERSION=v$(jq -r ".version" package.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+          VERSION_TYPE=$(alex-c-line get-version-type "$VERSION")
+          echo "version_type=$VERSION_TYPE" >> $GITHUB_OUTPUT
 
       - name: Check if version already exists
         id: check_version
@@ -70,3 +82,9 @@ jobs:
         run: |
           git tag "$TAG"
           git push origin "$TAG"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
+        with:
+          body_path: docs/releases/${{ needs.check-version.outputs.version_type }}/${{ needs.check-version.outputs.version }}.md
+          token: ${{ secrets.PAT_GITHUB }}
