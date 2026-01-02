@@ -42,13 +42,17 @@ jobs:
           VERSION_TYPE=$(alex-c-line get-version-type "$VERSION")
           echo "version_type=$VERSION_TYPE" >> $GITHUB_OUTPUT
 
-      - name: Check if version already exists
+      - name: Check if version and release document already exists
         id: check_version
         env:
           VERSION: ${{ steps.get_version.outputs.version }}
+          RELEASE_DOC_PATH: docs/releases/${{ steps.get_version.outputs.version_type }}/${{ steps.get_version.outputs.version }}.md
         run: |
           if git ls-remote --tags origin | grep -q "refs/tags/$VERSION$"; then
             echo "Version $VERSION already exists, skipping tag creation..."
+            echo "should_create_tag=false" >> $GITHUB_OUTPUT
+          elif [ ! -f "$RELEASE_DOC_PATH" ]; then
+            echo "No release document found. Skipping..."
             echo "should_create_tag=false" >> $GITHUB_OUTPUT
           else
             echo "Creating tag for $VERSION..."
