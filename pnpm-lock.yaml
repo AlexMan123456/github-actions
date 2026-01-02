@@ -12,8 +12,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2(d31140f2cbd336cf1b45f230a110f015)
       alex-c-line:
-        specifier: ^1.14.0
-        version: 1.14.0
+        specifier: ^1.15.0
+        version: 1.15.0
       eslint:
         specifier: ^9.39.2
         version: 9.39.2
@@ -50,8 +50,8 @@ packages:
       vite-tsconfig-paths: '>=5.1.4'
       vitest: '>=4.0.13'
 
-  '@alextheman/utility@4.3.5':
-    resolution: {integrity: sha512-NoceLC4u/W7iehxefvV3hAiHmc+efOvU+RHGTfSicqcP0uvgABC2hoYPLPgGihd83G3aAdtJ5xdewvgtmTQeCw==}
+  '@alextheman/utility@4.3.6':
+    resolution: {integrity: sha512-p1J+gHimvY3QRDk129uQVWLnfTxVMILscw6RmvnZK7egIkUZ0kwqnr832No4nre17yQu7FztvJn29e1E7BFS/A==}
     engines: {node: '>=22.0.0'}
 
   '@altano/repository-tools@2.0.1':
@@ -788,8 +788,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.14.0:
-    resolution: {integrity: sha512-sQfzkuXsJfWubA3JOo2cE+CKbLIjYoNJT9gmjqwdI4dJZwmbQIHbMOrnHZ1SyggeHPP7/v30HJeph040ibZzWg==}
+  alex-c-line@1.15.0:
+    resolution: {integrity: sha512-6psmuA4FZgZKM+RLT6IFzwM8ZqFg5rFeEzyiHpr7WF1s6G7RurWH6+dZiV5+nO/GIvprinRd7mpRJYCjBfdQ8w==}
     hasBin: true
 
   ansi-align@3.0.1:
@@ -2210,8 +2210,8 @@ packages:
     resolution: {integrity: sha512-41wJyvKep3yT2tyPqX/4blcfybknGB4D+oETKLs7Q76UiPqRpUJK3hr1nxelyYO0PHKVzJwlu0aCeEAsGI6rpw==}
     engines: {node: '>=20'}
 
-  ts-api-utils@2.3.0:
-    resolution: {integrity: sha512-6eg3Y9SF7SsAvGzRHQvvc1skDAhwI4YQ32ui1scxD1Ccr0G5qIIbUBT3pFTKX8kmWIQClHobtUdNuaBgwdfdWg==}
+  ts-api-utils@2.4.0:
+    resolution: {integrity: sha512-3TaVTaAv2gTiMB35i3FiGJaRfwb3Pyn/j3m/bfAvGe8FB7CF6u+LMYqYlDh7reQf7UNvoTvdfAqHGmPGOSsPmA==}
     engines: {node: '>=18.12'}
     peerDependencies:
       typescript: '>=4.8.4'
@@ -2494,7 +2494,7 @@ snapshots:
 
   '@alextheman/eslint-plugin@5.4.2(d31140f2cbd336cf1b45f230a110f015)':
     dependencies:
-      '@alextheman/utility': 4.3.5
+      '@alextheman/utility': 4.3.6
       '@eslint/js': 9.39.2
       '@typescript-eslint/utils': 8.51.0(eslint@9.39.2)(typescript@5.9.3)
       common-tags: 1.8.2
@@ -2522,7 +2522,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@alextheman/utility@4.3.5':
+  '@alextheman/utility@4.3.6':
     dependencies:
       zod: 4.3.4
 
@@ -2969,7 +2969,7 @@ snapshots:
       graphemer: 1.4.0
       ignore: 7.0.5
       natural-compare: 1.4.0
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -2988,8 +2988,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.48.1(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.51.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.51.0
+      '@typescript-eslint/tsconfig-utils': 8.48.1(typescript@5.9.3)
+      '@typescript-eslint/types': 8.48.1
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -3029,7 +3029,7 @@ snapshots:
       '@typescript-eslint/utils': 8.48.1(eslint@9.39.2)(typescript@5.9.3)
       debug: 4.4.3
       eslint: 9.39.2
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -3048,7 +3048,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.7.3
       tinyglobby: 0.2.15
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -3063,7 +3063,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.7.3
       tinyglobby: 0.2.15
-      ts-api-utils: 2.3.0(typescript@5.9.3)
+      ts-api-utils: 2.4.0(typescript@5.9.3)
       typescript: 5.9.3
     transitivePeerDependencies:
       - supports-color
@@ -3211,14 +3211,15 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.14.0:
+  alex-c-line@1.15.0:
     dependencies:
-      '@alextheman/utility': 4.3.5
+      '@alextheman/utility': 4.3.6
       commander: 14.0.2
       dotenv: 17.2.3
       dotenv-stringify: 3.0.1
       execa: 9.6.1
       update-notifier: 7.3.1
+      zod: 4.3.4
 
   ansi-align@3.0.1:
     dependencies:
@@ -4871,7 +4872,7 @@ snapshots:
       '@sindresorhus/base62': 1.0.0
       reserved-identifiers: 1.2.0
 
-  ts-api-utils@2.3.0(typescript@5.9.3):
+  ts-api-utils@2.4.0(typescript@5.9.3):
     dependencies:
       typescript: 5.9.3
 
