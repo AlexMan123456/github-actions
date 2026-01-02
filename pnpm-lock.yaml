@@ -10,10 +10,10 @@ importers:
     devDependencies:
       '@alextheman/eslint-plugin':
         specifier: ^5.4.2
-        version: 5.4.2(e36d5af162bc85b0f7a32d79894c424f)
+        version: 5.4.2(d31140f2cbd336cf1b45f230a110f015)
       alex-c-line:
-        specifier: ^1.12.0
-        version: 1.12.0
+        specifier: ^1.14.0
+        version: 1.14.0
       eslint:
         specifier: ^9.39.2
         version: 9.39.2
@@ -788,8 +788,8 @@ packages:
   ajv@6.12.6:
     resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
 
-  alex-c-line@1.12.0:
-    resolution: {integrity: sha512-pfRXtVtZxP4vIICENb7xWqbKGdtBJxcV7F1C7EnLYac333Tlqhxx1bbrF3n/LI4ryZdCX8sIIiwkD2tcJfB2mA==}
+  alex-c-line@1.14.0:
+    resolution: {integrity: sha512-sQfzkuXsJfWubA3JOo2cE+CKbLIjYoNJT9gmjqwdI4dJZwmbQIHbMOrnHZ1SyggeHPP7/v30HJeph040ibZzWg==}
     hasBin: true
 
   ansi-align@3.0.1:
@@ -1240,9 +1240,9 @@ packages:
       eslint: '>=8.0.0'
       jsonc-eslint-parser: ^2.0.0
 
-  eslint-plugin-perfectionist@4.15.1:
-    resolution: {integrity: sha512-MHF0cBoOG0XyBf7G0EAFCuJJu4I18wy0zAoT1OHfx2o6EOx1EFTIzr2HGeuZa1kDcusoX0xJ9V7oZmaeFd773Q==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  eslint-plugin-perfectionist@5.2.0:
+    resolution: {integrity: sha512-rLD4VyA6sxcCPlG/koqjp0D46JTNRURSDs22Jr1JeVbOiu1BoeRdROnJoqDoGESuXbwxvGEnMSqClX/Q3HSMig==}
+    engines: {node: ^20.0.0 || >=22.0.0}
     peerDependencies:
       eslint: '>=8.45.0'
 
@@ -2492,7 +2492,7 @@ packages:
 
 snapshots:
 
-  '@alextheman/eslint-plugin@5.4.2(e36d5af162bc85b0f7a32d79894c424f)':
+  '@alextheman/eslint-plugin@5.4.2(d31140f2cbd336cf1b45f230a110f015)':
     dependencies:
       '@alextheman/utility': 4.3.5
       '@eslint/js': 9.39.2
@@ -2506,7 +2506,7 @@ snapshots:
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.2)
       eslint-plugin-n: 17.23.1(eslint@9.39.2)(typescript@5.9.3)
       eslint-plugin-package-json: 0.85.0(@types/estree@1.0.8)(eslint@9.39.2)(jsonc-eslint-parser@2.4.1)
-      eslint-plugin-perfectionist: 4.15.1(eslint@9.39.2)(typescript@5.9.3)
+      eslint-plugin-perfectionist: 5.2.0(eslint@9.39.2)(typescript@5.9.3)
       eslint-plugin-prettier: 5.5.4(eslint-config-prettier@10.1.8(eslint@9.39.2))(eslint@9.39.2)(prettier@3.7.4)
       eslint-plugin-react: 7.37.5(eslint@9.39.2)
       eslint-plugin-react-hooks: 7.0.1(eslint@9.39.2)
@@ -2988,8 +2988,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.48.1(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.48.1(typescript@5.9.3)
-      '@typescript-eslint/types': 8.48.1
+      '@typescript-eslint/tsconfig-utils': 8.51.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.51.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -3211,7 +3211,7 @@ snapshots:
       json-schema-traverse: 0.4.1
       uri-js: 4.4.1
 
-  alex-c-line@1.12.0:
+  alex-c-line@1.14.0:
     dependencies:
       '@alextheman/utility': 4.3.5
       commander: 14.0.2
@@ -3816,9 +3816,8 @@ snapshots:
     transitivePeerDependencies:
       - '@types/estree'
 
-  eslint-plugin-perfectionist@4.15.1(eslint@9.39.2)(typescript@5.9.3):
+  eslint-plugin-perfectionist@5.2.0(eslint@9.39.2)(typescript@5.9.3):
     dependencies:
-      '@typescript-eslint/types': 8.51.0
       '@typescript-eslint/utils': 8.51.0(eslint@9.39.2)(typescript@5.9.3)
       eslint: 9.39.2
       natural-orderby: 5.0.0
