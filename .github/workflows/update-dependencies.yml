@@ -58,7 +58,7 @@ jobs:
         run: alex-c-line create-pull-request-templates
 
       - name: Commit template changes
-        uses: AlexMan123456/github-actions/.github/actions/commit-changes@b41a4e8a90eae5a7a0ade19d7e6d9ded37debe74 # v4.0.2
+        uses: AlexMan123456/github-actions/.github/actions/commit-changes@78be199abfba7efedbc8a151b98a58963038cad7 # v4.0.4
         id: commit_pull_request_template_changes
         with:
           message: "Update pull request templates"
@@ -67,7 +67,7 @@ jobs:
         run: corepack use pnpm@latest
 
       - name: Commit PNPM update
-        uses: AlexMan123456/github-actions/.github/actions/commit-changes@b41a4e8a90eae5a7a0ade19d7e6d9ded37debe74 # v4.0.2
+        uses: AlexMan123456/github-actions/.github/actions/commit-changes@78be199abfba7efedbc8a151b98a58963038cad7 # v4.0.4
         id: commit_pnpm_update
         with:
           message: "Update PNPM"
@@ -78,7 +78,7 @@ jobs:
           pnpm install --no-frozen-lockfile
 
       - name: Commit JavaScript dependencies updates
-        uses: AlexMan123456/github-actions/.github/actions/commit-changes@b41a4e8a90eae5a7a0ade19d7e6d9ded37debe74 # v4.0.2
+        uses: AlexMan123456/github-actions/.github/actions/commit-changes@78be199abfba7efedbc8a151b98a58963038cad7 # v4.0.4
         id: commit_javascript_dependencies_updates
         with:
           message: "Update JavaScript dependencies"
@@ -87,7 +87,7 @@ jobs:
         run: actions-up -y
 
       - name: Commit GitHub Actions updates
-        uses: AlexMan123456/github-actions/.github/actions/commit-changes@b41a4e8a90eae5a7a0ade19d7e6d9ded37debe74 # v4.0.2
+        uses: AlexMan123456/github-actions/.github/actions/commit-changes@78be199abfba7efedbc8a151b98a58963038cad7 # v4.0.4
         id: commit_actions_updates
         with:
           message: "Update GitHub Actions"
