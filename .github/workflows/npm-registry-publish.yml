@@ -5,6 +5,10 @@ permissions:
 
 on:
   workflow_call:
+    outputs:
+      did_publish:
+        description: "True if a publish occurred"
+        value: ${{ jobs.check-version.outputs.should_publish }}
 
 jobs:
   check-version:
