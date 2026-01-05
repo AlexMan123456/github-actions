@@ -35,6 +35,12 @@ jobs:
           node-version: 22
           cache: "pnpm"
 
+      - name: Setup Terraform
+        if: ${{ hashFiles('**/*.tf') != '' }}
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # v3.1.2
+        with:
+          terraform_version: 1.14.3
+
       - name: Enable Corepack
         run: |
           corepack enable
@@ -92,6 +98,17 @@ jobs:
         with:
           message: "Update GitHub Actions"
 
+      - name: Update Terraform Providers
+        if: ${{ hashFiles('**/*.tf') != '' }}
+        run: terraform init -upgrade -backend=false
+
+      - name: Commit Terraform updates
+        if: ${{ hashFiles('**/*.tf') != '' }}
+        uses: AlexMan123456/github-actions/.github/actions/commit-changes@78be199abfba7efedbc8a151b98a58963038cad7 # v4.0.4
+        id: commit_terraform_updates
+        with:
+          message: "Update Terraform Providers"
+
       - name: Choose pull request template
         id: pull_request_template
         env:
@@ -99,11 +116,13 @@ jobs:
           PNPM_CHANGED: ${{ steps.commit_pnpm_update.outputs.changes_detected }}
           JS_CHANGED: ${{ steps.commit_javascript_dependencies_updates.outputs.changes_detected }}
           ACTIONS_CHANGED: ${{ steps.commit_actions_updates.outputs.changes_detected }}
+          TERRAFORM_CHANGED: ${{ steps.commit_terraform_updates.outputs.changes_detected }}
         run: |
           if [ "$TEMPLATES_CHANGED" = "true" ] && \
             [ "$PNPM_CHANGED" = "false" ] && \
             [ "$JS_CHANGED" = "false" ] && \
-            [ "$ACTIONS_CHANGED" = "false" ]; then
+            [ "$ACTIONS_CHANGED" = "false" ] && \
+            [ "$TERRAFORM_CHANGED" = "false" ]; then
             echo "Template: documentation_change"
             echo "body_path=.github/PULL_REQUEST_TEMPLATE/documentation_change.md" >> "$GITHUB_OUTPUT"
           else
