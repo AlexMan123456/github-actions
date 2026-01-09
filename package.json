@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@alextheman/eslint-plugin": "^5.4.2",
-    "alex-c-line": "^1.15.0",
+    "alex-c-line": "^1.16.1",
     "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "prettier": "^3.7.4"
