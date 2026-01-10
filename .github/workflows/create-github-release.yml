@@ -4,7 +4,7 @@ on:
     branches: ["main"]
   workflow_call:
     secrets:
-      PAT_GITHUB:
+      GITHUB_TOKEN:
         required: true
 
 jobs:
@@ -78,11 +78,11 @@ jobs:
 
       - name: Setup GitHub user
         env:
-          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+          GITHUB_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "AlexUpBot"
           git config --global user.email "alexupbot@bot.com"
-          git remote set-url origin https://x-access-token:$PAT_GITHUB@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/${GITHUB_REPOSITORY}.git
 
       - name: Create Git tag
         env:
@@ -95,6 +95,6 @@ jobs:
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         with:
           body_path: docs/releases/${{ needs.check-version.outputs.version_type }}/${{ needs.check-version.outputs.version }}.md
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.ALEX_UP_BOT_GITHUB_TOKEN }}
           tag_name: ${{ needs.check-version.outputs.version }}
           name: ${{ needs.check-version.outputs.version }}
