@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      GITHUB_TOKEN:
+      GITHUB_ACTIONS_TOKEN:
         required: true
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
     with:
       version-type: major
     secrets:
-      GITHUB_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      GITHUB_ACTIONS_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_ACTIONS_TOKEN }}
 
   check-minor-version:
     permissions:
@@ -27,7 +27,7 @@ jobs:
     with:
       version-type: minor
     secrets:
-      GITHUB_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      GITHUB_ACTIONS_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_ACTIONS_TOKEN }}
 
   check-patch-version:
     permissions:
@@ -37,4 +37,4 @@ jobs:
     with:
       version-type: patch
     secrets:
-      GITHUB_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+      GITHUB_ACTIONS_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_ACTIONS_TOKEN }}

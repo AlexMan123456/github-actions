@@ -4,7 +4,7 @@ on:
     branches: ["main"]
   workflow_call:
     secrets:
-      GITHUB_TOKEN:
+      GITHUB_ACTIONS_TOKEN:
         required: true
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
 
       - name: Setup GitHub user
         env:
-          GITHUB_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          GITHUB_ACTIONS_TOKEN: ${{ github.repository == 'alextheman231/github-actions' && secrets.ALEX_UP_BOT_GITHUB_TOKEN || secrets.GITHUB_ACTIONS_TOKEN }}
         run: |
           git config --global user.name "AlexUpBot"
           git config --global user.email "alexupbot@bot.com"
