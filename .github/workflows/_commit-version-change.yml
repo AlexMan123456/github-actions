@@ -2,7 +2,7 @@ name: Commit a version change (Internal workflow)
 on:
   workflow_call:
     secrets:
-      PAT_GITHUB:
+      GITHUB_TOKEN:
         required: true
     inputs:
       version-type:
@@ -91,7 +91,7 @@ jobs:
 
       - name: Setup GitHub user
         env:
-          PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "AlexUpBot"
           git config --global user.email "alexupbot@bot.com"
@@ -124,7 +124,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@98357b18bf14b5342f975ff684046ec3b2a07725 # v8.0.0
         with:
-          token: ${{ secrets.PAT_GITHUB }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           author: AlexUpBot <alexupbot@bot.com>
           committer: AlexUpBot <alexupbot@bot.com>
           branch: alex-up-bot/change-${{ env.VERSION_TYPE }}-version
